@@ -193,14 +193,15 @@ void initInterfaces() {
     });
 }
 
-#define SP30_COMMS Serial1
+SoftwareSerial sps30serial(23, 19); //RX TX
+#define SP30_COMMS sps30serial
 
 /////////////////////////////////////////////////////////////
 /* define RX and TX pin for softserial and Serial1 on ESP32
  * can be set to zero if not applicable / needed           */
 /////////////////////////////////////////////////////////////
-#define TX_PIN 0
-#define RX_PIN 0
+#define TX_PIN 19
+#define RX_PIN 23
 
 /////////////////////////////////////////////////////////////
 /* define driver debug
@@ -215,11 +216,11 @@ void initInterfaces() {
 ///////////////////////////////////////////////////////////////
 
 // function prototypes (sometimes the pre-processor does not create prototypes themself on ESPxx)
-#define CO2_IN 10
+#define CO2_IN 15
 
 // pin for uart reading
-#define MH_Z19_RX 4  // D7
-#define MH_Z19_TX 0  // D6
+#define MH_Z19_RX 17  // D7
+#define MH_Z19_TX 16  // D6
 
 void ErrtoMess(char *mess, uint8_t r);
 void Errorloop(char *mess, uint8_t r);
@@ -230,7 +231,7 @@ MHZ co2(MH_Z19_RX, MH_Z19_TX, CO2_IN, MHZ::MHZ19C);
 
 // create constructor
 SPS30 sps30;
-MG811 mySensor = MG811(A0); // Analog input A0
+MG811 mySensor = MG811(A10); // Analog input A10 | G4
 
 float v400 = 4.535;
 float v40000 = 3.206;
