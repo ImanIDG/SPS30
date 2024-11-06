@@ -315,7 +315,7 @@ void setup() {
     esp_task_wdt_add(NULL); //add current thread to WDT watch
     esp_task_wdt_reset();
 
-    Serial.begin(115200);
+    Serial.begin(9600);
 //    preferences.begin("Configs", false);
 //    Serial.println("Hello from: " + preferences.getString("token", "not-set"));
     mqttController.init();
